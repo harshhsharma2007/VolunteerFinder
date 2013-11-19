@@ -57,6 +57,7 @@
 		5F46FE3F183BB1F800A61BC1 /* TUSafariActivity.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F46FE3D183BB1F800A61BC1 /* TUSafariActivity.strings */; };
 		5F6721F3183BB414001ADA15 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F6721F1183BB414001ADA15 /* DataModel.xcdatamodeld */; };
 		5F6721F6183BB6FF001ADA15 /* Opp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6721F5183BB6FF001ADA15 /* Opp.m */; };
+		5F6721FB183C075C001ADA15 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6721FA183C075C001ADA15 /* MapKit.framework */; };
 		5F9E2A9C183BAAAC00B840BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9E2A9B183BAAAC00B840BF /* Foundation.framework */; };
 		5F9E2A9E183BAAAC00B840BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9E2A9D183BAAAC00B840BF /* CoreGraphics.framework */; };
 		5F9E2AA0183BAAAC00B840BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9E2A9F183BAAAC00B840BF /* UIKit.framework */; };
@@ -200,6 +201,7 @@
 		5F6721F2183BB414001ADA15 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		5F6721F4183BB6FF001ADA15 /* Opp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Opp.h; path = Classes/Opp.h; sourceTree = "<group>"; };
 		5F6721F5183BB6FF001ADA15 /* Opp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Opp.m; path = Classes/Opp.m; sourceTree = "<group>"; };
+		5F6721FA183C075C001ADA15 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5F8932D6183BB25E001D569D /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = TUSafariActivity/TUSafariActivity/cs.lproj/TUSafariActivity.strings; sourceTree = "<group>"; };
 		5F8932D7183BB25E001D569D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = TUSafariActivity/TUSafariActivity/de.lproj/TUSafariActivity.strings; sourceTree = "<group>"; };
 		5F9E2A98183BAAAC00B840BF /* VolunteerFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolunteerFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F6721FB183C075C001ADA15 /* MapKit.framework in Frameworks */,
 				5F46FDBF183BAEC800A61BC1 /* CoreData.framework in Frameworks */,
 				5F9E2A9E183BAAAC00B840BF /* CoreGraphics.framework in Frameworks */,
 				5F9E2AA0183BAAAC00B840BF /* UIKit.framework in Frameworks */,
@@ -472,6 +475,7 @@
 		5F9E2A9A183BAAAC00B840BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F6721FA183C075C001ADA15 /* MapKit.framework */,
 				5F46FDC4183BAF0A00A61BC1 /* MobileCoreServices.framework */,
 				5F46FDC2183BAEE000A61BC1 /* Security.framework */,
 				5F46FDC0183BAED700A61BC1 /* SystemConfiguration.framework */,

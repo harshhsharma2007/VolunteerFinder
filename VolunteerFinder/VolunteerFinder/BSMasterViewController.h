@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @class BSDetailViewController;
 
-@interface BSMasterViewController : UITableViewController
+@interface BSMasterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) BSDetailViewController *detailViewController;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end 

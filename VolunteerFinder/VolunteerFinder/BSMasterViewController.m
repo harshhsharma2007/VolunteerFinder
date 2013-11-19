@@ -7,7 +7,7 @@
 //
 
 #import "BSMasterViewController.h"
-
+#import "DataManager.h"
 #import "BSDetailViewController.h"
 
 @interface BSMasterViewController () {
@@ -17,12 +17,14 @@
 
 @implementation BSMasterViewController
 
+@synthesize tableView = _tableView;
+
 - (void)awakeFromNib
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        self.clearsSelectionOnViewWillAppear = NO;
         self.preferredContentSize = CGSizeMake(320.0, 600.0);
     }
+
     [super awakeFromNib];
 }
 
@@ -31,10 +33,23 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (BSDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    _objects = [[NSMutableArray alloc] initWithArray:[Opp MR_findAll]];
+
+    self.mapView setShowsUserLocation:<#(BOOL)#>
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    //setup the toolbar bg
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        self.toolbar.frame = CGRectMake(self.toolbar.frame.origin.x, self.toolbar.frame.origin.y, self.toolbar.frame.size.width, 1000);
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,8 +84,8 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    Opp *object = _objects[indexPath.row];
+    cell.textLabel.text = [object title];
     return cell;
 }
 

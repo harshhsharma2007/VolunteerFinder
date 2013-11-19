@@ -36,6 +36,8 @@
 
 - (void) syncConfigWithTarget:(id)target callback:(SEL)callback failureCallback:(SEL)failureCallback {
  
+//    DebugLog(@"count: %f, %f", [[[Opp MR_findFirst] lat] floatValue], [[[Opp MR_findFirst] lon] floatValue]);
+    
     //start network activity indicator
 	[[Utilities instance] startActivity];
     
@@ -50,7 +52,7 @@
             
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
 
-                [Opp MR_importFromArray:[responseObject objectForKey:@"items"]];
+                [Opp MR_importFromArray:[responseObject objectForKey:@"items"] inContext:localContext];
                 
             } completion:^(BOOL success, NSError *error) {
             
