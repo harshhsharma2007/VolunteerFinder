@@ -1,0 +1,6 @@
+[submodule "VolunteerFinder/VolunteerFinder/ThirdParty/MagicalRecord"]
+	path = VolunteerFinder/VolunteerFinder/ThirdParty/MagicalRecord
+	url = https://github.com/magicalpanda/MagicalRecord.git
+[submodule "VolunteerFinder/VolunteerFinder/ThirdParty/TUSafariActivity"]
+	path = VolunteerFinder/VolunteerFinder/ThirdParty/TUSafariActivity
+	url = https://github.com/davbeck/TUSafariActivity.git

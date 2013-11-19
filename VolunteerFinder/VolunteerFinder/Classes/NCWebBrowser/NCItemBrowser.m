@@ -1,0 +1,86 @@
+//
+//  NCItemBrowser.m
+//  VolunteerFinder
+//
+//  Created by Brandon Jones on 11/18/13.
+//  Copyright (c) 2013 Brian Singer. All rights reserved.
+//
+
+#import "NCItemBrowser.h"
+//#import "FeedItem.h"
+
+@interface NCItemBrowser ()
+- (void)setValue:(NSString *)value forPlaceholder:(NSString *)placeholder;
+@end
+
+@implementation NCItemBrowser
+
+- (id)initWithItem:(id)item
+{
+    self = [super init];
+    if (self) {
+        
+//        //get the item
+//        [self setItem:item];
+//        
+//        //check the item type and load the appropriate html
+//        if (self.item && [self.item  isKindOfClass:[FeedItem class]]) {
+//            
+//            //FeedItem
+//            //setup the template
+//            FeedItem *feedItem = (FeedItem *)self.item;
+//            NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"FeedItemTemplate" ofType:@"html"];
+//            [self setItemTemplate:[NSMutableString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL]];
+//            [self setValue:feedItem.title forPlaceholder:@"title"];
+//            [self setValue:feedItem.content forPlaceholder:@"content"];
+//            
+//            //setup share values
+//            [self setShareTitle:feedItem.title];
+//            [self setShareURL:[NSURL URLWithString:feedItem.itemUrl]];
+//            
+//            //show the item
+//            [self loadHTMLString:self.itemTemplate];
+//            
+//        }
+        
+    }
+    return self;
+}
+
+- (void)loadView
+{
+    //don't show the toolbar and use a separate in-app browser for links
+    [self setHideToolbar:YES];
+    [self setOpenLinksInNewBrowser:YES];
+    
+    [super loadView];
+}
+
+#pragma mark - sharing
+
+//share the current web page
+- (void)share
+{
+    //use the special share items if we have them
+    if (self.shareURL) {
+        [self shareURL:self.shareURL withTitle:self.shareTitle];
+    } else {
+        [super share];
+    }
+}
+
+#pragma mark - helpers
+
+//used to replace template palceholders with values
+- (void)setValue:(NSString *)value forPlaceholder:(NSString *)placeholder
+{
+	//if the value is nil, use an empty string instead
+	if (!value) {
+		value = @"";
+	}
+	
+	//replace the {mustache} tag
+	[self.itemTemplate replaceOccurrencesOfString:[NSString stringWithFormat:@"{%@}", placeholder] withString:value options:NSLiteralSearch range:NSMakeRange(0, [self.itemTemplate length])];
+}
+
+@end

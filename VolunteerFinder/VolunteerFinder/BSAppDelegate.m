@@ -7,17 +7,24 @@
 //
 
 #import "BSAppDelegate.h"
+#import "DataManager.h"
 
 @implementation BSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //setup MagicalRecord cored data
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"VolunteerFinder.sqlite"];
+    
+    [[DataManager instance] syncConfigWithTarget:nil callback:nil failureCallback:nil];
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
+    
     return YES;
 }
 							
@@ -46,6 +53,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [MagicalRecord cleanUp];
 }
 
 @end
