@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DataModels.h"
+#import <MapKit/MapKit.h>
 
 @interface DataManager : NSObject
 
@@ -15,5 +16,6 @@
 
 //data calls
 - (void) syncConfigWithTarget:(id)target callback:(SEL)callback failureCallback:(SEL)failureCallback;
+- (void) findOppsWithCenter:(CLLocationCoordinate2D)center distance:(float)dist target:(id)target callback:(SEL)callback failureCallback:(SEL)failureCallback;
 
 @end

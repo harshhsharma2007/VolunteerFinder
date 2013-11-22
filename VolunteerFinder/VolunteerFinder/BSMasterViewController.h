@@ -12,6 +12,9 @@
 @class BSDetailViewController;
 
 @interface BSMasterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    BOOL _zoomedOnce;
+}
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) UITableView *tableView;

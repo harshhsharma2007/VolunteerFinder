@@ -16,7 +16,7 @@
     //setup MagicalRecord cored data
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"VolunteerFinder.sqlite"];
     
-    [[DataManager instance] syncConfigWithTarget:nil callback:nil failureCallback:nil];
+//    [[DataManager instance] syncConfigWithTarget:nil callback:nil failureCallback:nil];
     
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
