@@ -35,64 +35,26 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KQl-BW-gaV">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQl-BW-gaV">
                                 <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items/>
                             </toolbar>
-                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mLL-gJ-YKr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="2pz-XF-uhl" style="IBUITableViewCellStyleDefault" id="m0d-ak-lc9">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="yah-qp-Oc2">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2pz-XF-uhl">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="Ah7-4n-0Wa" kind="push" id="4kM-no-Xcl"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="KyX-7a-jo7" id="I0b-67-QOM"/>
-                                    <outlet property="delegate" destination="KyX-7a-jo7" id="r9x-uD-LUq"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="mLL-gJ-YKr" secondAttribute="trailing" id="GQl-fv-FAg"/>
                             <constraint firstItem="24B-cz-hGx" firstAttribute="top" secondItem="VkS-s5-gdC" secondAttribute="bottom" id="LbR-fS-nmy"/>
-                            <constraint firstItem="mLL-gJ-YKr" firstAttribute="leading" secondItem="Fp5-sk-fzY" secondAttribute="leading" id="YFw-ZE-ohs"/>
-                            <constraint firstItem="mLL-gJ-YKr" firstAttribute="leading" secondItem="VkS-s5-gdC" secondAttribute="leading" id="ah9-Vb-HLG"/>
-                            <constraint firstItem="mLL-gJ-YKr" firstAttribute="top" secondItem="Fp5-sk-fzY" secondAttribute="top" id="g3G-T2-2ku"/>
+                            <constraint firstItem="VkS-s5-gdC" firstAttribute="leading" secondItem="KQl-BW-gaV" secondAttribute="leading" id="M14-8l-CiZ"/>
+                            <constraint firstItem="KQl-BW-gaV" firstAttribute="top" secondItem="ObZ-4w-jJT" secondAttribute="bottom" constant="2" id="PLN-xV-JyH"/>
+                            <constraint firstItem="VkS-s5-gdC" firstAttribute="trailing" secondItem="KQl-BW-gaV" secondAttribute="trailing" id="S0i-4y-LVj"/>
+                            <constraint firstAttribute="trailing" secondItem="VkS-s5-gdC" secondAttribute="trailing" id="cag-mk-awc"/>
+                            <constraint firstItem="VkS-s5-gdC" firstAttribute="leading" secondItem="Fp5-sk-fzY" secondAttribute="leading" id="cw1-HF-SKM"/>
                             <constraint firstItem="VkS-s5-gdC" firstAttribute="top" secondItem="ObZ-4w-jJT" secondAttribute="bottom" id="ihI-cS-2qd"/>
-                            <constraint firstItem="mLL-gJ-YKr" firstAttribute="bottom" secondItem="VkS-s5-gdC" secondAttribute="bottom" id="kuE-as-XWJ"/>
-                            <constraint firstItem="mLL-gJ-YKr" firstAttribute="trailing" secondItem="VkS-s5-gdC" secondAttribute="trailing" id="qmc-Ps-wkg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d8v-pK-1fa"/>
                     <connections>
                         <outlet property="mapView" destination="VkS-s5-gdC" id="KOA-cm-hXL"/>
-                        <outlet property="tableView" destination="mLL-gJ-YKr" id="8OR-Mv-Mx6"/>
                         <outlet property="toolbar" destination="KQl-BW-gaV" id="4eQ-W0-rcW"/>
                     </connections>
                 </viewController>

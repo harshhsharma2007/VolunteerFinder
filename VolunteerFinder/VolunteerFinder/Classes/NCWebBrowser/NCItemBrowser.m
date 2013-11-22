@@ -7,7 +7,7 @@
 //
 
 #import "NCItemBrowser.h"
-//#import "FeedItem.h"
+#import "Opp.h"
 
 @interface NCItemBrowser ()
 - (void)setValue:(NSString *)value forPlaceholder:(NSString *)placeholder;
@@ -20,28 +20,28 @@
     self = [super init];
     if (self) {
         
-//        //get the item
-//        [self setItem:item];
-//        
-//        //check the item type and load the appropriate html
-//        if (self.item && [self.item  isKindOfClass:[FeedItem class]]) {
-//            
-//            //FeedItem
-//            //setup the template
-//            FeedItem *feedItem = (FeedItem *)self.item;
-//            NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"FeedItemTemplate" ofType:@"html"];
-//            [self setItemTemplate:[NSMutableString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL]];
-//            [self setValue:feedItem.title forPlaceholder:@"title"];
-//            [self setValue:feedItem.content forPlaceholder:@"content"];
-//            
-//            //setup share values
-//            [self setShareTitle:feedItem.title];
-//            [self setShareURL:[NSURL URLWithString:feedItem.itemUrl]];
-//            
-//            //show the item
-//            [self loadHTMLString:self.itemTemplate];
-//            
-//        }
+        //get the item
+        [self setItem:item];
+        
+        //check the item type and load the appropriate html
+        if (self.item && [self.item  isKindOfClass:[Opp class]]) {
+            
+            //FeedItem
+            //setup the template
+            Opp *oppItem = (Opp *)self.item;
+            NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"FeedItemTemplate" ofType:@"html"];
+            [self setItemTemplate:[NSMutableString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL]];
+            [self setValue:oppItem.title forPlaceholder:@"title"];
+            [self setValue:oppItem.desc forPlaceholder:@"content"];
+            
+            //setup share values
+            [self setShareTitle:oppItem.title];
+            [self setShareURL:[NSURL URLWithString:@"www.google.com"]];
+            
+            //show the item
+            [self loadHTMLString:self.itemTemplate];
+            
+        }
         
     }
     return self;

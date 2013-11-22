@@ -9,6 +9,7 @@
 #import "BSMasterViewController.h"
 #import "DataManager.h"
 #import "BSDetailViewController.h"
+#import "NCItemBrowser.h"
 
 @interface BSMasterViewController () {
     NSMutableArray *_objects;
@@ -40,7 +41,16 @@
     
     _objects = [[NSMutableArray alloc] initWithArray:[Opp MR_findAll]];
 
-    self.mapView setShowsUserLocation:<#(BOOL)#>
+    [self.mapView setShowsUserLocation:YES];
+    
+    
+    //create table view
+    _tableView = [[UITableView alloc] initWithFrame:CGRectInset(self.mapView.frame, 0, 0) style:UITableViewStyleGrouped];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_tableView];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -63,6 +73,7 @@
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
     }
+    
     [_objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -82,8 +93,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    if (!cell) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell.backgroundColor = [UIColor clearColor];
+    }
 
+    
     Opp *object = _objects[indexPath.row];
     cell.textLabel.text = [object title];
     return cell;
@@ -126,6 +144,12 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         NSDate *object = _objects[indexPath.row];
         self.detailViewController.detailItem = object;
+    }
+    else {
+        Opp *selectedOpp = _objects[indexPath.row];
+        
+        NCItemBrowser *browser = [[NCItemBrowser alloc] initWithItem:selectedOpp];
+        [self.navigationController pushViewController:browser animated:YES];
     }
 }
 

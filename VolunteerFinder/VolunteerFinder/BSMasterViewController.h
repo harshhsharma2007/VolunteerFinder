@@ -14,7 +14,7 @@
 @interface BSMasterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) BSDetailViewController *detailViewController;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
