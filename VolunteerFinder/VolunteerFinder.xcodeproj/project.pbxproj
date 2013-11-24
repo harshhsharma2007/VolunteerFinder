@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F32E4D8184019F60075CBAF /* BSAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F32E4D7184019F60075CBAF /* BSAnnotation.m */; };
 		5F46FD5F183BAE7000A61BC1 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F46FD4D183BAE7000A61BC1 /* AFHTTPRequestOperation.m */; };
 		5F46FD60183BAE7000A61BC1 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F46FD4F183BAE7000A61BC1 /* AFHTTPRequestOperationManager.m */; };
 		5F46FD61183BAE7000A61BC1 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F46FD51183BAE7000A61BC1 /* AFHTTPSessionManager.m */; };
@@ -55,6 +56,8 @@
 		5F46FE3B183BB15000A61BC1 /* Safari~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F46FE35183BB15000A61BC1 /* Safari~ipad.png */; };
 		5F46FE3C183BB15000A61BC1 /* TUSafariActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F46FE37183BB15000A61BC1 /* TUSafariActivity.m */; };
 		5F46FE3F183BB1F800A61BC1 /* TUSafariActivity.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F46FE3D183BB1F800A61BC1 /* TUSafariActivity.strings */; };
+		5F55EA9C1840ED0700B5F599 /* carDot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F55EA9A1840ED0700B5F599 /* carDot2.png */; };
+		5F55EA9D1840ED0700B5F599 /* carDot2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F55EA9B1840ED0700B5F599 /* carDot2@2x.png */; };
 		5F6721F3183BB414001ADA15 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F6721F1183BB414001ADA15 /* DataModel.xcdatamodeld */; };
 		5F6721F6183BB6FF001ADA15 /* Opp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6721F5183BB6FF001ADA15 /* Opp.m */; };
 		5F6721FB183C075C001ADA15 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6721FA183C075C001ADA15 /* MapKit.framework */; };
@@ -87,6 +90,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F32E4D6184019F60075CBAF /* BSAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSAnnotation.h; path = Classes/BSAnnotation.h; sourceTree = "<group>"; };
+		5F32E4D7184019F60075CBAF /* BSAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSAnnotation.m; path = Classes/BSAnnotation.m; sourceTree = "<group>"; };
 		5F46FD4C183BAE7000A61BC1 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		5F46FD4D183BAE7000A61BC1 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		5F46FD4E183BAE7000A61BC1 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -183,6 +188,8 @@
 		5F46FE37183BB15000A61BC1 /* TUSafariActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TUSafariActivity.m; path = TUSafariActivity/TUSafariActivity/TUSafariActivity.m; sourceTree = "<group>"; };
 		5F46FE3E183BB1F800A61BC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = TUSafariActivity/TUSafariActivity/en.lproj/TUSafariActivity.strings; sourceTree = "<group>"; };
 		5F46FE40183BB20000A61BC1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = TUSafariActivity/TUSafariActivity/es.lproj/TUSafariActivity.strings; sourceTree = "<group>"; };
+		5F55EA9A1840ED0700B5F599 /* carDot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = carDot2.png; path = Images/carDot2.png; sourceTree = "<group>"; };
+		5F55EA9B1840ED0700B5F599 /* carDot2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "carDot2@2x.png"; path = "Images/carDot2@2x.png"; sourceTree = "<group>"; };
 		5F6721E2183BB290001ADA15 /* eu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = eu; path = TUSafariActivity/TUSafariActivity/eu.lproj/TUSafariActivity.strings; sourceTree = "<group>"; };
 		5F6721E3183BB290001ADA15 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = TUSafariActivity/TUSafariActivity/fi.lproj/TUSafariActivity.strings; sourceTree = "<group>"; };
 		5F6721E4183BB295001ADA15 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = TUSafariActivity/TUSafariActivity/fr.lproj/TUSafariActivity.strings; sourceTree = "<group>"; };
@@ -254,9 +261,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F32E4D5184019D50075CBAF /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				5F32E4D6184019F60075CBAF /* BSAnnotation.h */,
+				5F32E4D7184019F60075CBAF /* BSAnnotation.m */,
+			);
+			name = Annotations;
+			sourceTree = "<group>";
+		};
 		5F46FD49183BAE4C00A61BC1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5F32E4D5184019D50075CBAF /* Annotations */,
 				5F46FDD7183BB06300A61BC1 /* Utilities.h */,
 				5F46FDD8183BB06300A61BC1 /* Utilities.m */,
 				5F46FDCC183BB03D00A61BC1 /* NCWebBrowser */,
@@ -453,6 +470,15 @@
 			name = TUSafariActivity;
 			sourceTree = "<group>";
 		};
+		5F55EA991840ECE900B5F599 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5F55EA9A1840ED0700B5F599 /* carDot2.png */,
+				5F55EA9B1840ED0700B5F599 /* carDot2@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		5F9E2A8F183BAAAC00B840BF = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +517,7 @@
 		5F9E2AA1183BAAAC00B840BF /* VolunteerFinder */ = {
 			isa = PBXGroup;
 			children = (
+				5F55EA991840ECE900B5F599 /* Images */,
 				5F46FD49183BAE4C00A61BC1 /* Classes */,
 				5F9E2AAA183BAAAC00B840BF /* BSAppDelegate.h */,
 				5F9E2AAB183BAAAC00B840BF /* BSAppDelegate.m */,
@@ -632,11 +659,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F46FE3F183BB1F800A61BC1 /* TUSafariActivity.strings in Resources */,
+				5F55EA9C1840ED0700B5F599 /* carDot2.png in Resources */,
 				5F46FE3B183BB15000A61BC1 /* Safari~ipad.png in Resources */,
 				5F46FE39183BB15000A61BC1 /* Safari@2x.png in Resources */,
 				5F46FDD3183BB03D00A61BC1 /* FeedItemTemplate.html in Resources */,
 				5F9E2AB2183BAAAC00B840BF /* Main_iPad.storyboard in Resources */,
 				5F9E2ABA183BAAAC00B840BF /* Images.xcassets in Resources */,
+				5F55EA9D1840ED0700B5F599 /* carDot2@2x.png in Resources */,
 				5F46FE3A183BB15000A61BC1 /* Safari@2x~ipad.png in Resources */,
 				5F9E2AAF183BAAAC00B840BF /* Main_iPhone.storyboard in Resources */,
 				5F46FDD5183BB03D00A61BC1 /* NCWebBrowser.bundle in Resources */,
@@ -682,6 +711,7 @@
 				5F6721F6183BB6FF001ADA15 /* Opp.m in Sources */,
 				5F46FDAF183BAE7D00A61BC1 /* NSManagedObject+MagicalRequests.m in Sources */,
 				5F46FD65183BAE7000A61BC1 /* AFURLRequestSerialization.m in Sources */,
+				5F32E4D8184019F60075CBAF /* BSAnnotation.m in Sources */,
 				5F46FDB3183BAE7D00A61BC1 /* NSManagedObjectContext+MagicalThreading.m in Sources */,
 				5F46FDB7183BAE7D00A61BC1 /* MagicalRecord+Actions.m in Sources */,
 				5F46FD61183BAE7000A61BC1 /* AFHTTPSessionManager.m in Sources */,

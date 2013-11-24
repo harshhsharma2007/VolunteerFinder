@@ -11,12 +11,15 @@
 
 @class BSDetailViewController;
 
-@interface BSMasterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface BSMasterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, UIPopoverControllerDelegate>
 {
     BOOL _zoomedOnce;
+    MKCoordinateSpan _previousSpan;
+    UIPopoverController *_popover;
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) MKMapView *hiddenMapView;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) BSDetailViewController *detailViewController;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;

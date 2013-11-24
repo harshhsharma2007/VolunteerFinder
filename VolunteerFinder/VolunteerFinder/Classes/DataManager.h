@@ -17,5 +17,6 @@
 //data calls
 - (void) syncConfigWithTarget:(id)target callback:(SEL)callback failureCallback:(SEL)failureCallback;
 - (void) findOppsWithCenter:(CLLocationCoordinate2D)center distance:(float)dist target:(id)target callback:(SEL)callback failureCallback:(SEL)failureCallback;
+- (void) findOppsWithCenter:(CLLocationCoordinate2D)center distance:(float)dist target:(id)target callback:(SEL)callback failureCallback:(SEL)failureCallback page:(int)page;
 
 @end

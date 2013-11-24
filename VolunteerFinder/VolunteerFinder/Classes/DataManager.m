@@ -102,17 +102,19 @@
     
 }
 
-
 - (void) findOppsWithCenter:(CLLocationCoordinate2D)center distance:(float)dist target:(id)target callback:(SEL)callback failureCallback:(SEL)failureCallback {
+    [self findOppsWithCenter:center distance:dist target:target callback:callback failureCallback:failureCallback page:1];
+}
+
+- (void) findOppsWithCenter:(CLLocationCoordinate2D)center distance:(float)dist target:(id)target callback:(SEL)callback failureCallback:(SEL)failureCallback page:(int)page {
     
+    //params
     NSString *vol_loc = [[NSString alloc] initWithFormat:@"%f,%f", center.latitude, center.longitude];
-    vol_loc = [vol_loc stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-    NSString *vol_dist = [[NSString alloc] initWithFormat:@"%f", dist];
-    vol_dist = [vol_dist stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-    
-    //    DebugLog(@"count: %f, %f", [[[Opp MR_findFirst] lat] floatValue], [[[Opp MR_findFirst] lon] floatValue]);
+    int distInt = (floorf(dist) < 1) ? 1 : floorf(dist);
+    NSString *vol_dist = [[NSString alloc] initWithFormat:@"%i", distInt];
+    NSString *start = [[NSString alloc] initWithFormat:@"%i", page];
+    int numInt = 100;
+    NSString *num = [[NSString alloc] initWithFormat:@"%i", numInt];
     
     //start network activity indicator
 	[[Utilities instance] startActivity];
@@ -122,7 +124,7 @@
     NSMutableSet *acceptableTypes = [[NSMutableSet alloc] initWithSet:manager.responseSerializer.acceptableContentTypes];
     [acceptableTypes addObject:@"application/javascript"];
     [manager.responseSerializer setAcceptableContentTypes:acceptableTypes];
-    [manager GET:configUrl parameters:@{@"num":@"100", @"output":@"json", @"key":@"theapptree", @"vol_loc":vol_loc, @"vol_dist":vol_dist} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:configUrl parameters:@{@"num":num, @"output":@"json", @"key":@"theapptree", @"vol_loc":vol_loc, @"vol_dist":vol_dist, @"start":start} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if ([responseObject objectForKey:@"items"] && [[responseObject objectForKey:@"items"] isKindOfClass:[NSArray class]]) {
             
@@ -158,13 +160,21 @@
                     }
                     
                 } completion:^(BOOL success, NSError *error) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    #pragma clang diagnostic push
+                    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                     [(id)target performSelector:callback withObject:nil];
-#pragma clang diagnostic pop
+                    #pragma clang diagnostic pop
+                    
+                    [[Utilities instance] stopActivity];
                 }];
                 
             }];
+            
+            if ([[responseObject objectForKey:@"items"] count] >= numInt && page <= 10) {
+                
+                [self findOppsWithCenter:center distance:dist target:target callback:callback failureCallback:failureCallback page:page+1];
+                
+            }
             
         }
         
@@ -173,10 +183,12 @@
         
         DebugLog(@"Download art failed. Error: %@.", error);
         
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [(id)target performSelector:failureCallback withObject:nil];
-#pragma clang diagnostic pop
+        #pragma clang diagnostic pop
+        
+        [[Utilities instance] stopActivity];
         
     }];
     
