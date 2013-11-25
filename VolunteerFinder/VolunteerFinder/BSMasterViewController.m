@@ -80,6 +80,15 @@
     else {
         self.mapView = self.detailViewController.mapView;
         self.detailViewController.mapView.delegate = self;
+        
+        if (!_zoomedOnce && (self.mapView.userLocation.location.horizontalAccuracy < 2000 || self.mapView.userLocation.location.verticalAccuracy < 2000)) {
+            
+            [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 4000, 4000)];
+            _zoomedOnce = YES;
+            
+            [self refreshOppsWithCurrentRegion];
+            
+        }
     }
 }
 
@@ -319,45 +328,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Opp *selectedOpp = _objects[indexPath.row];
-    NCItemBrowser *browser = [[NCItemBrowser alloc] initWithItem:selectedOpp];
+    
+    if (!_browser)
+        _browser = [[NCItemBrowser alloc] initWithItem:selectedOpp];
+    else
+        [_browser setItem:selectedOpp];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-
-        UIPopoverController* aPopover = [[UIPopoverController alloc] initWithContentViewController:browser];
-        aPopover.delegate = self;
-        _popover = aPopover;
         
-        //find radar annotation
-        NSMutableArray *annotations = [[NSMutableArray alloc] initWithArray:self.mapView.annotations];
-        [annotations filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-            if ([evaluatedObject isKindOfClass:[BSAnnotation class]] && [[(BSAnnotation*)evaluatedObject oppID] isEqualToString:selectedOpp.oppID]) return YES;
-            return NO;
-        }]];
-        
-        if (annotations.count == 0) {
-        
-            [_popover presentPopoverFromRect:CGRectZero inView:self.detailViewController.mapView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        }
-        else {
-            CGPoint point = [self.mapView convertCoordinate:[(BSAnnotation*)annotations.firstObject coordinate] toPointToView:self.mapView];
-            
-            [_popover presentPopoverFromRect:CGRectMake(point.x, point.y, 0, 0) inView:self.detailViewController.mapView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        }
+        if (self.detailViewController.navigationController.viewControllers.count == 1)
+            [self.detailViewController.navigationController pushViewController:_browser animated:YES];
         
     }
     else {
         
         
-        [self.navigationController pushViewController:browser animated:YES];
-    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        [self.navigationController pushViewController:_browser animated:YES];
     }
 }
 
@@ -370,22 +356,19 @@
         BSAnnotation *selectedAnnotation = self.mapView.selectedAnnotations.firstObject;
         Opp *selectedOpp = selectedAnnotation.opp;
         
-        NCItemBrowser *browser = [[NCItemBrowser alloc] initWithItem:selectedOpp];
+        if (!_browser)
+            _browser = [[NCItemBrowser alloc] initWithItem:selectedOpp];
+        else
+            [_browser setItem:selectedOpp];
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             
-            UIPopoverController* aPopover = [[UIPopoverController alloc] initWithContentViewController:browser];
-            aPopover.delegate = self;
-            _popover = aPopover;
-            
-            [self.mapView deselectAnnotation:selectedAnnotation animated:YES];
-            
-            CGPoint point = [self.mapView convertCoordinate:selectedAnnotation.coordinate toPointToView:self.mapView];
-            [_popover presentPopoverFromRect:CGRectMake(point.x, point.y, 0, 0)  inView:self.detailViewController.mapView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            if (self.detailViewController.navigationController.viewControllers.count == 1)
+                [self.detailViewController.navigationController pushViewController:_browser animated:YES];
             
         }
         else {
-            [self.navigationController pushViewController:browser animated:YES];
+            [self.navigationController pushViewController:_browser animated:YES];
         }
     }
     

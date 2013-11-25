@@ -47,6 +47,22 @@
     return self;
 }
 
+- (void) setItem:(id)item {
+    
+    NSString *templatePath = [[NSBundle mainBundle] pathForResource:@"FeedItemTemplate" ofType:@"html"];
+    [self setItemTemplate:[NSMutableString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL]];
+    [self setValue:[(Opp*)item title] forPlaceholder:@"title"];
+    [self setValue:[(Opp*)item desc] forPlaceholder:@"content"];
+    
+    //setup share values
+    [self setShareTitle:[(Opp*)item title]];
+    [self setShareURL:[NSURL URLWithString:@"www.google.com"]];
+    
+    //show the item
+    [self loadHTMLString:self.itemTemplate];
+    
+}
+
 - (void)loadView
 {
     //don't show the toolbar and use a separate in-app browser for links

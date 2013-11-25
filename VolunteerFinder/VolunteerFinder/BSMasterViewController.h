@@ -10,12 +10,14 @@
 #import <MapKit/MapKit.h>
 
 @class BSDetailViewController;
+@class NCItemBrowser;
 
 @interface BSMasterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, UIPopoverControllerDelegate>
 {
     BOOL _zoomedOnce;
     MKCoordinateSpan _previousSpan;
     UIPopoverController *_popover;
+    NCItemBrowser *_browser;
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
