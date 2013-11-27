@@ -393,7 +393,17 @@
 - (void) mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {}
 
 - (void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-
+    
+    if ([(BSAnnotation*)view.annotation containedAnnotations].count > 0) {
+        CLLocationCoordinate2D leftCoord = [self.mapView convertPoint:CGPointZero toCoordinateFromView:self.mapView];
+        CLLocationCoordinate2D rightCoord = [self.mapView convertPoint:CGPointMake(40, 0) toCoordinateFromView:self.mapView];
+        double gridSize = MKMapPointForCoordinate(rightCoord).x - MKMapPointForCoordinate(leftCoord).x;
+        
+        CLLocationCoordinate2D center = [(BSAnnotation*)view.annotation coordinate];
+        MKMapRect gridMapRect = MKMapRectMake(MKMapPointForCoordinate(center).x - round(gridSize/2.0), MKMapPointForCoordinate(center).y - round(gridSize/2.0), gridSize, gridSize);
+        [self.mapView setRegion:MKCoordinateRegionForMapRect(gridMapRect) animated:YES];
+        return;
+    }
 
 }
 
@@ -409,8 +419,9 @@
     float latDiff = fabsf(mapView.region.span.latitudeDelta - _previousSpan.latitudeDelta);
     float lonDiff = fabsf(mapView.region.span.longitudeDelta - _previousSpan.longitudeDelta);
     
-    if (lonDiff > 0.001 || latDiff > 0.001)
+    if (lonDiff > 0.001 || latDiff > 0.001) {
         [self updateVisibleAnnotations];
+    }
     
 }
 
